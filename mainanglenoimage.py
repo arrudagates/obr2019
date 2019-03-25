@@ -3,6 +3,12 @@ import io
 import cv2
 import numpy as np
 import math
+import serial
+
+ser = serial.Serial('/dev/ttyACM0', 9600)
+
+
+
 # The grey image is used for most of the calculations and isn't displayed
 WINDOW_GRAY_IMAGE = 'gray image'
 # This is displayed on screen with overlays showing the line tracking
@@ -296,9 +302,11 @@ Baseline Width: {}
         if (theangle > 90):
             bearing = int(180 - theangle *100 /90)
             print('motor a = 100 and motor b = ' + str(bearing))
+            ser.write('100,' + str(bearing))
         elif(theangle < 91):
             bearing = int(theangle *100 /90)
             print('motor a = ' + str(bearing) + ' and motor b = 100')
+            ser.write(str(bearing) + ',100')
 
 
 
