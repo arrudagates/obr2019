@@ -20,8 +20,8 @@ CONTROL_LINE_WIDTH = 'Line Width'
 #   640 x 480
 #   800 x 600
 # etc...
-RESOLUTION_X = 352
-RESOLUTION_Y = 288
+RESOLUTION_X = 320
+RESOLUTION_Y = 240
 
 # This is half the width of the line at the bottom of the screen that we start looking for
 # the line we want to follow.
