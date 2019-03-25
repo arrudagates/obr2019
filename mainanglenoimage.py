@@ -4,8 +4,9 @@ import cv2
 import numpy as np
 import math
 import serial
+import time
 
-ser = serial.Serial('/dev/ttyACM0', 9600)
+ser = serial.Serial('/dev/ttyACM0', 115200)
 
 
 
@@ -302,12 +303,13 @@ Baseline Width: {}
         if (theangle > 90):
             bearing = int(180 - theangle *100 /90)
             print('motor a = 100 and motor b = ' + str(bearing))
-            ser.write('100,' + str(bearing))
+            ser.write(bytes('100,' + str(bearing), 'utf-8'))
+            time.sleep(1)
         elif(theangle < 91):
             bearing = int(theangle *100 /90)
             print('motor a = ' + str(bearing) + ' and motor b = 100')
-            ser.write(str(bearing) + ',100')
-
+            ser.write(bytes(str(bearing) + ',100', 'utf-8'))
+            time.sleep(1)
 
 
 
